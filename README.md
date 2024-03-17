@@ -11,4 +11,5 @@ I applied the `Database-First Approach` to create database and models.
 
 ## `Project Requirements`
 
-<embed src="/Project%20Requirements/DVLD%20-%20Project%201%20-%20Requirements%20v1.docx.pdf" width="100%" height="745px" />
+<embed-pdf url="/Project%20Requirements/DVLD%20-%20Project%201%20-%20Requirements%20v1.docx.pdf">
+
