@@ -11,4 +11,4 @@ I applied the `Database-First Approach` to create database and models.
 
 ## `Project Requirements`
 
-<a href="https://github.com/MohamedBadwy360/Driving-License-Management-System-Backend-Project/blob/main/Project%20Requirements/DVLD%20-%20Project%201%20-%20Requirements%20v1.docx.pdf" target="_blank">PDF</a>
+ <embed src="https://github.com/MohamedBadwy360/Driving-License-Management-System-Backend-Project/blob/main/Project%20Requirements/DVLD%20-%20Project%201%20-%20Requirements%20v1.docx.pdf" width="100%" height="850px"/>
