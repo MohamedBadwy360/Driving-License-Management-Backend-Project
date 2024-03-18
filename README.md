@@ -9,9 +9,9 @@ I applied the `Database-First Approach` to create database and models.
 
 ---
 
-### [`Project Requirements`](https://github.com/MohamedBadwy360/Driving-License-Management-System-Backend-Project/blob/main/Project%20Requirements/DVLD%20-%20Project%201%20-%20Requirements%20v1.docx.pdf)
+### [Project Requirements](https://github.com/MohamedBadwy360/Driving-License-Management-System-Backend-Project/blob/main/Project%20Requirements/DVLD%20-%20Project%201%20-%20Requirements%20v1.docx.pdf)
 
 ---
 
-## `Database Schema`
+## Database Schema
 ![Database Schema](/Database%20Schema/DVLD%20Database.jpg)
