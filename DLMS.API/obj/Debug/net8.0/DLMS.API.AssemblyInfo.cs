@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DLMS.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d72c21371a5b28c89b3073be7a93163b7798d8f3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea4e7bdbec9bae8110f29de3ed51b4b6b9e0aa40")]
 [assembly: System.Reflection.AssemblyProductAttribute("DLMS.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DLMS.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
