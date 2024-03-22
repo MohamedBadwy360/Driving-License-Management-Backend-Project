@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLMS.API", "DLMS.API\DLMS.API.csproj", "{686CEBA6-7DBA-4C8E-A8C5-D08F3F021E09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLMS.EF", "DLMS.EF\DLMS.EF.csproj", "{C943F384-0CBB-4998-9482-3E0BD861BA5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLMS.Core", "DLMS.Core\DLMS.Core.csproj", "{6FC1C63C-9A97-4806-8346-C9B5F9CA6427}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{686CEBA6-7DBA-4C8E-A8C5-D08F3F021E09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{686CEBA6-7DBA-4C8E-A8C5-D08F3F021E09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{686CEBA6-7DBA-4C8E-A8C5-D08F3F021E09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{686CEBA6-7DBA-4C8E-A8C5-D08F3F021E09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C943F384-0CBB-4998-9482-3E0BD861BA5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C943F384-0CBB-4998-9482-3E0BD861BA5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C943F384-0CBB-4998-9482-3E0BD861BA5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C943F384-0CBB-4998-9482-3E0BD861BA5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FC1C63C-9A97-4806-8346-C9B5F9CA6427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FC1C63C-9A97-4806-8346-C9B5F9CA6427}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FC1C63C-9A97-4806-8346-C9B5F9CA6427}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FC1C63C-9A97-4806-8346-C9B5F9CA6427}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
