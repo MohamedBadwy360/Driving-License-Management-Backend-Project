@@ -2,9 +2,9 @@
 
 These are `REST API` and `Database` for Driving License Management System.
 
-I used `C#`, `ASP.NET Core`, `SQL Server` and `Entity Framework`.
+I used `C#`, `ASP.NET Core`, `SQL Server`, `Entity Framework`, `Visual Studio`, `Visual Studio Code`, and `EF Power Tools`.
 
-I applied the `Database-First Approach` to create database and models.
+I implemented `Repository Pattern with Unit of Work`, applied the `Database-First Approach` to create database and use `EF Power Tools` to generate models.
 
 
 ---
