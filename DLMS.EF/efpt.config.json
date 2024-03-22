@@ -1,0 +1,93 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "DLMSContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "DLMS.EF",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 1,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[Applications]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ApplicationTypes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Countries]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DetainedLicenses]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Drivers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InternationalLicenses]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LicenseClasses]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Licenses]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LocalDrivingLicenseApplications]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[People]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TestAppointments]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Tests]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TestTypes]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "desktop-mg329fr.DLMS.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}
