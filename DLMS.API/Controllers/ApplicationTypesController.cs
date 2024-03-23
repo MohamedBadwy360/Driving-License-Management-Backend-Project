@@ -23,7 +23,7 @@ namespace DLMS.API.Controllers
 
         [SwaggerOperation(Summary = "Get application type by Id", 
             Description = "Return application type from database by Id")]
-        [ProducesResponseType(typeof(string), 400)]
+        [ProducesResponseType(typeof(string), 404)]
         [ProducesResponseType(typeof(ApplicationType), 200)]
         [ResponseCache(CacheProfileName = "Any-60")]
         [HttpGet("{id:int}")]
@@ -33,7 +33,7 @@ namespace DLMS.API.Controllers
 
             if (applicationType is null)
             {
-                return BadRequest($"There isn't any application type with Id {id}");
+                return NotFound($"There isn't any application type with Id {id}");
             } 
 
             return Ok(applicationType);

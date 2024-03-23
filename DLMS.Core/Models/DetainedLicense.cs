@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace DLMS.Core.Models;
 
@@ -29,9 +30,11 @@ public partial class DetainedLicense
 
     [ForeignKey("LicenseID")]
     [InverseProperty("DetainedLicenses")]
+    [JsonIgnore]
     public virtual License License { get; set; }
 
     [ForeignKey("ReleaseApplicationID")]
     [InverseProperty("DetainedLicenses")]
+    [JsonIgnore]
     public virtual Application ReleaseApplication { get; set; }
 }

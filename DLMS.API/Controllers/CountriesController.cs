@@ -21,7 +21,7 @@ namespace DLMS.API.Controllers
 
 
         [SwaggerOperation(Summary = "Get country by Id", Description = "Retrieve country from database by Id")]
-        [ProducesResponseType(typeof(string), 400)]
+        [ProducesResponseType(typeof(string), 404)]
         [ProducesResponseType(typeof(Country), 200)]
         [ResponseCache(CacheProfileName = "Any-60")]
         [HttpGet("{id:int}")]
@@ -31,7 +31,7 @@ namespace DLMS.API.Controllers
 
             if (country is null)
             {
-                return BadRequest($"There isn't any country with this Id {id}");
+                return NotFound($"There isn't any country with this Id {id}");
             }
 
             return Ok(country);

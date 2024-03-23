@@ -22,10 +22,10 @@ namespace DLMS.API.Controllers
 
         [SwaggerOperation(Summary = "Get person by Id", Description = "Get person by Id from the database")]
         [ProducesResponseType(typeof(Person), 200)]
-        [ProducesResponseType(typeof(string), 400)]
+        [ProducesResponseType(typeof(string), 404)]
         [ResponseCache(CacheProfileName = "Any-60")]
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetAsync(int id)
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
             var person = await _unitOfWork.People.GetByIdAsync(id);
 
@@ -35,7 +35,7 @@ namespace DLMS.API.Controllers
             }
             else
             {
-                return BadRequest($"Person with Id {id} is not found.");
+                return NotFound($"Person with Id {id} is not found.");
             }
         }
 
