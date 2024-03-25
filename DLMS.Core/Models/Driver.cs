@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace DLMS.Core.Models;
 
@@ -17,12 +18,15 @@ public partial class Driver
     [Column(TypeName = "smalldatetime")]
     public DateTime CreatedDate { get; set; }
 
+    [JsonIgnore]
     [InverseProperty("Driver")]
     public virtual ICollection<InternationalLicense> InternationalLicenses { get; set; } = new List<InternationalLicense>();
 
+    [JsonIgnore]
     [InverseProperty("Driver")]
     public virtual ICollection<License> Licenses { get; set; } = new List<License>();
 
+    [JsonIgnore]
     [ForeignKey("PersonID")]
     [InverseProperty("Drivers")]
     public virtual Person Person { get; set; }

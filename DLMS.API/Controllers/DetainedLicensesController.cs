@@ -19,7 +19,7 @@ namespace DLMS.API.Controllers
         }
 
 
-
+        
         [SwaggerOperation(Summary = "Get detained license with Id", 
             Description = "Retrieve detained license with Id from database")]
         [ProducesResponseType(typeof(string), 404)]
@@ -45,7 +45,7 @@ namespace DLMS.API.Controllers
             Description = "Retrieve all detained licenses from database.")]
         [ProducesResponseType(typeof(string), 404)]
         [ProducesResponseType(typeof(IEnumerable<DetainedLicense>), 200)]
-        [ResponseCache(CacheProfileName = "NoCache")]
+        [ResponseCache(CacheProfileName = "Any-60")]
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
@@ -94,5 +94,58 @@ namespace DLMS.API.Controllers
             return Ok(detainedLicense);
         }
 
+
+
+
+
+        [SwaggerOperation(Summary = "Update detained license", 
+            Description = "Update detaiend license in the database.")]
+        [ProducesResponseType(typeof(string), 404)]
+        [ProducesResponseType(typeof(DetainedLicense), 200)]
+        [ResponseCache(CacheProfileName = "NoCache")]
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync(int id, UpdateDetainedLicenseDTO updateDetainedLicenseDTO)
+        {
+            var detainedLicense = await _unitOfWork.DetainedLicenses.GetByIdAsync(id);
+
+            if (detainedLicense is null)
+            {
+                return NotFound($"There isn't any detained license with Id {id}");
+            }
+
+            detainedLicense.IsReleased = updateDetainedLicenseDTO.IsReleased;
+            detainedLicense.ReleaseDate = updateDetainedLicenseDTO.ReleaseDate;
+            detainedLicense.ReleaseApplicationID = updateDetainedLicenseDTO.ReleaseApplicationID;
+
+            _unitOfWork.DetainedLicenses.Update(detainedLicense);
+            await _unitOfWork.CommitAsync();
+
+            return Ok(detainedLicense);
+        }
+
+
+
+
+
+        [SwaggerOperation(Summary = "Delete a detained license",
+            Description = "Delete a detained license from the database.")]
+        [ProducesResponseType(typeof(string), 404)]
+        [ProducesResponseType(204)]
+        [ResponseCache(CacheProfileName = "NoCache")]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            var detainedLicense = await _unitOfWork.DetainedLicenses.GetByIdAsync(id);
+
+            if (detainedLicense is null)
+            {
+                return NotFound($"There isn't any detained license with Id {id}");
+            }
+
+            _unitOfWork.DetainedLicenses.Delete(detainedLicense);
+            await _unitOfWork.CommitAsync();
+
+            return NoContent();
+        }
     }
 }
