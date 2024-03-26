@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace DLMS.Core.Models;
 
@@ -26,14 +27,17 @@ public partial class InternationalLicense
 
     public bool IsActive { get; set; }
 
+    [JsonIgnore]
     [ForeignKey("ApplicationID")]
     [InverseProperty("InternationalLicenses")]
     public virtual Application Application { get; set; }
 
+    [JsonIgnore]
     [ForeignKey("DriverID")]
     [InverseProperty("InternationalLicenses")]
     public virtual Driver Driver { get; set; }
 
+    [JsonIgnore]
     [ForeignKey("IssuedUsingLocalLicenseID")]
     [InverseProperty("InternationalLicenses")]
     public virtual License IssuedUsingLocalLicense { get; set; }
