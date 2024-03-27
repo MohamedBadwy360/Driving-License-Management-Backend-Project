@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace DLMS.Core.Models;
 
@@ -18,12 +19,15 @@ public partial class LocalDrivingLicenseApplication
 
     [ForeignKey("ApplicationID")]
     [InverseProperty("LocalDrivingLicenseApplications")]
+    [JsonIgnore]
     public virtual Application Application { get; set; }
 
     [ForeignKey("LicenseClassID")]
     [InverseProperty("LocalDrivingLicenseApplications")]
+    [JsonIgnore]
     public virtual LicenseClass LicenseClass { get; set; }
 
     [InverseProperty("LocalDrivingLicenseApplication")]
+    [JsonIgnore]
     public virtual ICollection<TestAppointment> TestAppointments { get; set; } = new List<TestAppointment>();
 }

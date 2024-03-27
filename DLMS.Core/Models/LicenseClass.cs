@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace DLMS.Core.Models;
 
@@ -34,8 +35,10 @@ public partial class LicenseClass
     public decimal ClassFees { get; set; }
 
     [InverseProperty("LicenseClassNavigation")]
+    [JsonIgnore]
     public virtual ICollection<License> Licenses { get; set; } = new List<License>();
 
     [InverseProperty("LicenseClass")]
+    [JsonIgnore]
     public virtual ICollection<LocalDrivingLicenseApplication> LocalDrivingLicenseApplications { get; set; } = new List<LocalDrivingLicenseApplication>();
 }
