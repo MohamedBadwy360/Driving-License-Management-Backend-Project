@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace DLMS.Core.Models;
 
@@ -28,16 +29,20 @@ public partial class TestAppointment
 
     [ForeignKey("LocalDrivingLicenseApplicationID")]
     [InverseProperty("TestAppointments")]
+    [JsonIgnore]
     public virtual LocalDrivingLicenseApplication LocalDrivingLicenseApplication { get; set; }
 
     [ForeignKey("RetakeTestApplicationID")]
     [InverseProperty("TestAppointments")]
+    [JsonIgnore]
     public virtual Application RetakeTestApplication { get; set; }
 
     [ForeignKey("TestTypeID")]
     [InverseProperty("TestAppointments")]
+    [JsonIgnore]
     public virtual TestType TestType { get; set; }
 
     [InverseProperty("TestAppointment")]
+    [JsonIgnore]
     public virtual ICollection<Test> Tests { get; set; } = new List<Test>();
 }
