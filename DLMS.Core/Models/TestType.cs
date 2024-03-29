@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace DLMS.Core.Models;
 
@@ -24,5 +25,6 @@ public partial class TestType
     public decimal TestTypeFees { get; set; }
 
     [InverseProperty("TestType")]
+    [JsonIgnore]
     public virtual ICollection<TestAppointment> TestAppointments { get; set; } = new List<TestAppointment>();
 }
