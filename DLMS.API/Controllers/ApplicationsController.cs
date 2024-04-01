@@ -3,6 +3,7 @@ using DLMS.Core.DTOs.ApplicationDTOs;
 using DLMS.Core.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace DLMS.API.Controllers
@@ -67,18 +68,23 @@ namespace DLMS.API.Controllers
         [SwaggerOperation(Summary = "Create an application", 
             Description = "Create an application and add it to database, " +
             "ApplicationStatus: 1-New 2-Cancelled 3-Completed")]
-        [ProducesResponseType(typeof(string), 400)]
+        [ProducesResponseType(typeof(string), 404)]
+        [ProducesResponseType(400)]
         [ProducesResponseType(typeof(CreateApplicationDTO), 200)]
         [ResponseCache(CacheProfileName = "NoCache")]
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateApplicationDTO createApplicationDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var isValidPersonId = await _unitOfWork.People.AnyAsync(p => p.PersonID
                     == createApplicationDTO.ApplicantPersonID);
 
             if (! isValidPersonId)
             {
-                return BadRequest($"No Person with Id {createApplicationDTO.ApplicantPersonID}");
+                return NotFound($"No Person with Id {createApplicationDTO.ApplicantPersonID}");
             }
 
             var isValidApplicationTypeId = await _unitOfWork.ApplicationTypes.AnyAsync(t => t.ApplicationTypeID
@@ -120,17 +126,23 @@ namespace DLMS.API.Controllers
 
         [SwaggerOperation(Summary = "Update an application", 
             Description = "Update an application in database, ApplicationStatus: 1-New 2-Cancelled 3-Completed")]
-        [ProducesResponseType(typeof(string), 400)]
+        [ProducesResponseType(typeof(string), 404)]
+        [ProducesResponseType(400)]
         [ProducesResponseType(typeof(Application), 200)]
         [ResponseCache(CacheProfileName = "NoCache")]
         [HttpPut]
         public async Task<IActionResult> UpdateAsync(int id, UpdateApplicationDTO updateApplicationDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var application = await _unitOfWork.Applications.GetByIdAsync(id);
 
             if (application is null)
             {
-                return BadRequest($"There isn't any application with Id {id}");
+                return NotFound($"There isn't any application with Id {id}");
             }
 
             bool isValidApplicationTypeId = await _unitOfWork.ApplicationTypes.AnyAsync(t => t.ApplicationTypeID

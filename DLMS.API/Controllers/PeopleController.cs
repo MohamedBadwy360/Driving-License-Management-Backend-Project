@@ -69,6 +69,11 @@ namespace DLMS.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAsync(AddPersonDTO addPersonDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var isValidCountryId = await _unitOfWork.Countries.AnyAsync(country => country.CountryID
                     == addPersonDTO.NationalityCountryID);
 
@@ -122,6 +127,11 @@ namespace DLMS.API.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateAsync(int id, UpdatePersonDTO updatePersonDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var person = await _unitOfWork.People.GetByIdAsync(id);
 
             if (person is null)

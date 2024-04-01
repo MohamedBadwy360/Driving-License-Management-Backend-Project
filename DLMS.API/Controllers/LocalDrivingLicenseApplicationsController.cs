@@ -75,6 +75,11 @@ namespace DLMS.API.Controllers
         public async Task<IActionResult> CreateAsync(CreateLocalDrivingLicenseApplicationDTO 
             createLocalDrivingLicenseApplicationDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             bool isValidApplication = await _unitOfWork.Applications.AnyAsync(a =>
                 a.ApplicationID == createLocalDrivingLicenseApplicationDTO.ApplicationID);
 
@@ -117,12 +122,18 @@ namespace DLMS.API.Controllers
         [SwaggerOperation(Summary = "Update a local driving license application",
             Description = "Update a local driving license application in database")]
         [ProducesResponseType(typeof(string), 404)]
+        [ProducesResponseType(400)]
         [ProducesResponseType(typeof(LocalDrivingLicenseApplication), 200)]
         [ResponseCache(CacheProfileName = "NoCache")]
         [HttpPut]
         public async Task<IActionResult> Update(int id, UpdateLocalDrivingLicenseApplicationDTO 
                updateLocalDrivingLicenseApplicationDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var localDrivingLicenseApplication = await _unitOfWork.LocalDrivingLicenseApplications
                 .GetByIdAsync(id);
 

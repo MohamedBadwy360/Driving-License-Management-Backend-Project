@@ -67,11 +67,17 @@ namespace DLMS.API.Controllers
         [SwaggerOperation(Summary = "Create an international license",
             Description = "Create an international license in the database.")]
         [ProducesResponseType(typeof(string), 404)]
+        [ProducesResponseType(400)]
         [ProducesResponseType(typeof(InternationalLicense), 200)]
         [ResponseCache(CacheProfileName = "NoCache")]
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateInternationalLicenseDTO createInternationalLicenseDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             bool isValidApplication = await _unitOfWork.Applications.AnyAsync(a => a.ApplicationID ==
                     createInternationalLicenseDTO.ApplicationID);
 
@@ -118,11 +124,17 @@ namespace DLMS.API.Controllers
         [SwaggerOperation(Summary = "Update an international license",
             Description = "Update an international license in the database.")]
         [ProducesResponseType(typeof(string), 404)]
+        [ProducesResponseType(400)]
         [ProducesResponseType(typeof(InternationalLicense), 200)]
         [ResponseCache(CacheProfileName = "NoCache")]
         [HttpPut]
         public async Task<IActionResult> Update(int id, UpdateInternationalLicenseDTO updateInternationalLicenseDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var internationalLicense = await _unitOfWork.InternationalLicenses.GetByIdAsync(id);
 
             if (internationalLicense is null)

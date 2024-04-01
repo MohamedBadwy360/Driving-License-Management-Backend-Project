@@ -76,6 +76,11 @@ namespace DLMS.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateLicenseClass createLicenseClass)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var isClassNameExistInDatabase = await _unitOfWork.LicenseClasses.AnyAsync(lc =>
                     lc.ClassName == createLicenseClass.ClassName);
 
@@ -108,11 +113,17 @@ namespace DLMS.API.Controllers
             "MinimumAllowedAge: Minmum age allowed to apply for this license, " +
             "DefaultValidityLength: How many years the licesnse will be valid.")]
         [ProducesResponseType(typeof(string), 404)]
+        [ProducesResponseType(400)]
         [ProducesResponseType(typeof(LicenseClass), 200)]
         [ResponseCache(CacheProfileName = "NoCache")]
         [HttpPut]
         public async Task<IActionResult> Update(int id, UpdateLicenseClassDTO updateLicenseClassDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var licenseClass = await _unitOfWork.LicenseClasses.GetByIdAsync(id);
 
             if (licenseClass is null)

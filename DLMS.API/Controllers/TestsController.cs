@@ -73,6 +73,11 @@ namespace DLMS.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateTestDTO createTestDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             bool isValidTestAppointment = await _unitOfWork.TestAppointments.AnyAsync(t => t.TestAppointmentID
                 == createTestDTO.TestAppointmentID);
 
@@ -109,11 +114,17 @@ namespace DLMS.API.Controllers
         [SwaggerOperation(Summary = "Update a test",
             Description = "Update a test in database, TestResult: 0 - Fail 1-Pass")]
         [ProducesResponseType(typeof(string), 404)]
+        [ProducesResponseType(400)]
         [ProducesResponseType(typeof(Test), 200)]
         [ResponseCache(CacheProfileName = "NoCache")]
         [HttpPut]
         public async Task<IActionResult> Update(int id, UpdateTestDTO updateTestDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var test = await _unitOfWork.Tests.GetByIdAsync(id);
 
             if (test is null)

@@ -77,6 +77,11 @@ namespace DLMS.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateLicenseDTO createLicenseDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             bool isValidApplication = await _unitOfWork.Applications.AnyAsync(a => a.ApplicationID ==
                     createLicenseDTO.ApplicationID);
 
@@ -149,6 +154,11 @@ namespace DLMS.API.Controllers
         [HttpPut]
         public async Task<IActionResult> Update(int id, UpdateLicenseDTO updateLicenseDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var license = await _unitOfWork.Licenses.GetByIdAsync(id);
 
             if (license is null)

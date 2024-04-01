@@ -66,12 +66,18 @@ namespace DLMS.API.Controllers
 
         [SwaggerOperation(Summary = "Create an application type", 
             Description = "Create an application type and add it to database")]
+        [ProducesResponseType(400)]
         [ProducesResponseType(typeof(string), 400)]
         [ProducesResponseType(typeof(ApplicationType), 200)]
         [ResponseCache(CacheProfileName = "NoCache")]
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateApplicationTypeDTO createApplicationTypeDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var isNotValidApplicationTypeTitle = await _unitOfWork.ApplicationTypes.AnyAsync(
                 t => t.ApplicationTypeTitle == createApplicationTypeDTO.ApplicationTypeTitle);
 
@@ -105,6 +111,11 @@ namespace DLMS.API.Controllers
         [HttpPut]
         public async Task<IActionResult> Update(int id, UpdateApplicationTypeDTO updateApplicationTypeDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var applicationType = await _unitOfWork.ApplicationTypes.GetByIdAsync(id);
 
             if (applicationType is null)

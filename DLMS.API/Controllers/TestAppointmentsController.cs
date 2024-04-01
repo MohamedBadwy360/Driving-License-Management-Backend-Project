@@ -73,6 +73,11 @@ namespace DLMS.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateTestAppointmentDTO createTestAppointmentDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             bool isValidTestType = await _unitOfWork.TestAppointments.AnyAsync(tt => tt.TestTypeID == 
             createTestAppointmentDTO.TestTypeID);
 
@@ -136,6 +141,11 @@ namespace DLMS.API.Controllers
         [HttpPut]
         public async Task<IActionResult> Update(int id, UpdateTestAppointmentDTO updateTestAppointmentDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var testAppointment = await _unitOfWork.TestAppointments.GetByIdAsync(id);
 
             if (testAppointment is null)

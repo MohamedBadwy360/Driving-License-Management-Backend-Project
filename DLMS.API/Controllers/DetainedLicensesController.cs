@@ -64,18 +64,24 @@ namespace DLMS.API.Controllers
 
         [SwaggerOperation(Summary = "Create detained license",
             Description = "Create detained license in the database")]
-        [ProducesResponseType(typeof(string), 400)]
+        [ProducesResponseType(typeof(string), 404)]
+        [ProducesResponseType(400)]
         [ProducesResponseType(typeof(DetainedLicense), 200)]
         [ResponseCache(CacheProfileName = "NoCache")]
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateDetainedLicenseDTO createDetainedLicenseDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             bool isValidLicenseId = await _unitOfWork.Licenses.AnyAsync(l => l.LicenseID == 
                     createDetainedLicenseDTO.LicenseID);
 
             if (! isValidLicenseId)
             {
-                return BadRequest($"Thers isn't any license with Id {createDetainedLicenseDTO.LicenseID}");
+                return NotFound($"Thers isn't any license with Id {createDetainedLicenseDTO.LicenseID}");
             }
 
             DetainedLicense detainedLicense = new DetainedLicense
@@ -100,12 +106,18 @@ namespace DLMS.API.Controllers
 
         [SwaggerOperation(Summary = "Update detained license", 
             Description = "Update detaiend license in the database.")]
+        [ProducesResponseType(400)]
         [ProducesResponseType(typeof(string), 404)]
         [ProducesResponseType(typeof(DetainedLicense), 200)]
         [ResponseCache(CacheProfileName = "NoCache")]
         [HttpPut]
         public async Task<IActionResult> UpdateAsync(int id, UpdateDetainedLicenseDTO updateDetainedLicenseDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var detainedLicense = await _unitOfWork.DetainedLicenses.GetByIdAsync(id);
 
             if (detainedLicense is null)

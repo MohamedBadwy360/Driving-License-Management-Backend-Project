@@ -73,6 +73,11 @@ namespace DLMS.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateDriverDTO createDriverDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             bool validPerson = await _unitOfWork.People.AnyAsync(p => p.PersonID ==
                     createDriverDTO.PersonID);
 
@@ -108,11 +113,17 @@ namespace DLMS.API.Controllers
         [SwaggerOperation(Summary = "Update a driver", 
             Description = "Update a driver in the database.")]
         [ProducesResponseType(typeof(string), 404)]
+        [ProducesResponseType(400)]
         [ProducesResponseType(typeof(Driver), 200)]
         [ResponseCache(CacheProfileName = "NoCache")]
         [HttpPut]
         public async Task<IActionResult> Update(int id, UpdateDriverDTO updateDriverDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var driver = await _unitOfWork.Drivers.GetByIdAsync(id);
 
             if (driver is null)

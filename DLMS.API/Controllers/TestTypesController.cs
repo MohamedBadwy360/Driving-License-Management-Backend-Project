@@ -73,6 +73,11 @@ namespace DLMS.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateTestTypeDTO createTestTypeDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             bool isTestTitleAlreadyExists = await _unitOfWork.TestTypes.AnyAsync(t => t.TestTypeTitle ==
                 createTestTypeDTO.TestTypeTitle);
 
@@ -101,11 +106,17 @@ namespace DLMS.API.Controllers
         [SwaggerOperation(Summary = "Update a test type",
             Description = "Update a test type in database")]
         [ProducesResponseType(typeof(TestType), 200)]
+        [ProducesResponseType(400)]
         [ProducesResponseType(typeof(string), 404)]
         [ResponseCache(CacheProfileName = "NoCache")]
         [HttpPut]
         public async Task<IActionResult> Update(int id, UpdateTestTypeDTO updateTestTypeDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var testType = await _unitOfWork.TestTypes.GetByIdAsync(id);
 
             if (testType is null)
