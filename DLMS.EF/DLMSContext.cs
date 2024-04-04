@@ -3,11 +3,12 @@
 using System;
 using System.Collections.Generic;
 using DLMS.Core.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DLMS.EF;
 
-public partial class DLMSContext : DbContext
+public partial class DLMSContext : IdentityDbContext<ApplicationUser>
 {
     public DLMSContext()
     {
@@ -174,6 +175,7 @@ public partial class DLMSContext : DbContext
         });
 
         OnModelCreatingPartial(modelBuilder);
+        base.OnModelCreating(modelBuilder);
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

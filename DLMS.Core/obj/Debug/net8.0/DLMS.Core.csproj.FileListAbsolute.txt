@@ -10,3 +10,4 @@ F:\ME\Study\Software Engineering\Projects\Driving License Management\DLMS.Core\o
 F:\ME\Study\Software Engineering\Projects\Driving License Management\DLMS.Core\obj\Debug\net8.0\refint\DLMS.Core.dll
 F:\ME\Study\Software Engineering\Projects\Driving License Management\DLMS.Core\obj\Debug\net8.0\DLMS.Core.pdb
 F:\ME\Study\Software Engineering\Projects\Driving License Management\DLMS.Core\obj\Debug\net8.0\ref\DLMS.Core.dll
+F:\ME\Study\Software Engineering\Projects\Driving License Management\DLMS.Core\obj\Debug\net8.0\DLMS.Core.csproj.AssemblyReference.cache
