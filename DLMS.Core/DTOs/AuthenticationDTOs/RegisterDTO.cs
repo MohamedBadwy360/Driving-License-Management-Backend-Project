@@ -5,11 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLMS.Core.DTOs.UserDTOs
+namespace DLMS.Core.DTOs.AuthenticationDTOs
 {
-    public class NewUserDTO
+    public class RegisterDTO
     {
         [Required, MaxLength(50)]
+        public string FirstName { get; set; }
+
+        [Required, MaxLength(50)]
+        public string LastName { get; set; }
+
+        [Required, MaxLength(100)]
         public string UserName { get; set; }
 
         [Required]

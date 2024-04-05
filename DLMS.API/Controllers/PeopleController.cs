@@ -1,13 +1,8 @@
-﻿using DLMS.Core;
-using DLMS.Core.DTOs.PersonDTO;
-using DLMS.Core.Models;
-using DLMS.EF;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
+﻿using DLMS.Core.DTOs.PersonDTO;
 
 namespace DLMS.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PeopleController : ControllerBase
@@ -64,7 +59,7 @@ namespace DLMS.API.Controllers
 
         [SwaggerOperation(Summary = "Add person", Description = "Add person to the database")]
         [ProducesResponseType(typeof(string), 400)]
-        [ProducesResponseType(typeof(AddPersonDTO), 200)]
+        [ProducesResponseType(typeof(Person), 200)]
         [ResponseCache(CacheProfileName = "NoCache")]
         [HttpPost]
         public async Task<IActionResult> AddAsync(AddPersonDTO addPersonDTO)
@@ -115,7 +110,7 @@ namespace DLMS.API.Controllers
             await _unitOfWork.People.AddAsync(person);
             await _unitOfWork.CommitAsync();
 
-            return Ok(addPersonDTO);
+            return Ok(person);
         }
 
 
@@ -152,6 +147,7 @@ namespace DLMS.API.Controllers
 
 
 
+        [Authorize(Roles = RoleTypes.Admin)]
         [SwaggerOperation(Summary = "Delete person", Description = "Delete person from the database")]
         [ProducesResponseType(typeof(string), 400)]
         [ProducesResponseType(200)]

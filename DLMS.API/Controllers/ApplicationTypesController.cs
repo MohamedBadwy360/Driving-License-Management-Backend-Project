@@ -1,12 +1,8 @@
-﻿using DLMS.Core;
-using DLMS.Core.DTOs.ApplicationTypeDTOs;
-using DLMS.Core.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
+﻿using DLMS.Core.DTOs.ApplicationTypeDTOs;
 
 namespace DLMS.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ApplicationTypesController : ControllerBase
@@ -135,6 +131,7 @@ namespace DLMS.API.Controllers
 
 
 
+        [Authorize(Roles = RoleTypes.Admin)]
         [SwaggerOperation(Summary = "Delete an application type", 
             Description = "Delete an application type from database with Id.")]
         [ProducesResponseType(typeof(string), 400)]

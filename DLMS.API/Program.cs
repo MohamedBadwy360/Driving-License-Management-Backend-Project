@@ -1,11 +1,3 @@
-using DLMS.Core;
-using DLMS.EF;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
-using DLMS.Core.Models;
-using Microsoft.AspNetCore.Identity;
-using DLMS.API.Extensions;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -18,6 +10,10 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+
+builder.Services.Configure<Jwt>(builder.Configuration.GetSection("JWT"));
+
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddControllers(options =>
 {
@@ -34,6 +30,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGenJwtAuthentication();
 builder.Services.AddCustomJwtAuthentication(builder.Configuration);
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(p =>
+    {
+        p.AllowAnyOrigin();
+        p.AllowAnyHeader();
+        p.AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -44,6 +50,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthentication();
 app.UseAuthorization();

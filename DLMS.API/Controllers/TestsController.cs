@@ -1,12 +1,8 @@
-﻿using DLMS.Core;
-using DLMS.Core.DTOs.TestDTOs;
-using DLMS.Core.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
+﻿using DLMS.Core.DTOs.TestDTOs;
 
 namespace DLMS.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TestsController : ControllerBase
@@ -144,7 +140,7 @@ namespace DLMS.API.Controllers
 
 
 
-
+        [Authorize(Roles = RoleTypes.Admin)]
         [SwaggerOperation(Summary = "Delete a test",
             Description = "Delete a test from database")]
         [ProducesResponseType(typeof(string), 404)]

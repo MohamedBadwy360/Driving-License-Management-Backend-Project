@@ -1,13 +1,8 @@
-﻿using DLMS.Core;
-using DLMS.Core.DTOs.ApplicationDTOs;
-using DLMS.Core.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Swashbuckle.AspNetCore.Annotations;
+﻿using DLMS.Core.DTOs.ApplicationDTOs;
 
 namespace DLMS.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ApplicationsController : ControllerBase
@@ -70,7 +65,7 @@ namespace DLMS.API.Controllers
             "ApplicationStatus: 1-New 2-Cancelled 3-Completed")]
         [ProducesResponseType(typeof(string), 404)]
         [ProducesResponseType(400)]
-        [ProducesResponseType(typeof(CreateApplicationDTO), 200)]
+        [ProducesResponseType(typeof(Application), 200)]
         [ResponseCache(CacheProfileName = "NoCache")]
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateApplicationDTO createApplicationDTO)
@@ -117,7 +112,7 @@ namespace DLMS.API.Controllers
             await _unitOfWork.Applications.AddAsync(application);
             await _unitOfWork.CommitAsync();
 
-            return Ok(createApplicationDTO);
+            return Ok(application);
         }
 
 
@@ -176,7 +171,7 @@ namespace DLMS.API.Controllers
 
 
 
-
+        [Authorize(Roles = RoleTypes.Admin)]
         [SwaggerOperation(Summary = "Delete an application", 
             Description = "Delete an application from database by Id")]
         [ProducesResponseType(typeof(string), 400)]

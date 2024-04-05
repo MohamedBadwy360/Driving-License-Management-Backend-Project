@@ -1,9 +1,4 @@
-﻿using DLMS.Core;
-using DLMS.Core.DTOs.DetainedLicenseDTOs;
-using DLMS.Core.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
+﻿using DLMS.Core.DTOs.DetainedLicenseDTOs;
 
 namespace DLMS.API.Controllers
 {

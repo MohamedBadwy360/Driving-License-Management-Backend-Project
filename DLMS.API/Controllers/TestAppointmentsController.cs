@@ -1,12 +1,8 @@
-﻿using DLMS.Core;
-using DLMS.Core.DTOs.TestAppointmentDTOs;
-using DLMS.Core.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
+﻿using DLMS.Core.DTOs.TestAppointmentDTOs;
 
 namespace DLMS.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TestAppointmentsController : ControllerBase
@@ -194,7 +190,7 @@ namespace DLMS.API.Controllers
 
 
 
-
+        [Authorize(Roles = RoleTypes.Admin)]
         [SwaggerOperation(Summary = "Delete a test appointment",
             Description = "Delete a test appointment from database")]
         [ProducesResponseType(typeof(string), 404)]

@@ -1,12 +1,8 @@
-﻿using DLMS.Core;
-using DLMS.Core.DTOs.DriverDTOs;
-using DLMS.Core.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
+﻿using DLMS.Core.DTOs.DriverDTOs;
 
 namespace DLMS.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class DriversController : ControllerBase
@@ -151,7 +147,7 @@ namespace DLMS.API.Controllers
 
 
 
-
+        [Authorize(Roles = RoleTypes.Admin)]
         [SwaggerOperation(Summary = "Delete a driver", 
             Description = "Delete a driver by id from the database.")]
         [ProducesResponseType(typeof(string), 404)]

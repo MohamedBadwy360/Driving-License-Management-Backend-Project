@@ -5,14 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLMS.Core.DTOs.UserDTOs
+namespace DLMS.Core.DTOs.AuthenticationDTOs
 {
-    public class LoginUserDTO
+    public class AddRoleDTO
     {
-        [Required, MaxLength(50)]
-        public string UserName { get; set; }
-
         [Required]
-        public string Password { get; set; }
+        public string UserId { get; set; }
+        [Required]
+        public string RoleName { get; set; }
     }
 }

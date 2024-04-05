@@ -1,12 +1,8 @@
-﻿using DLMS.Core;
-using DLMS.Core.DTOs.LicenseClassDTOs;
-using DLMS.Core.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
+﻿using DLMS.Core.DTOs.LicenseClassDTOs;
 
 namespace DLMS.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class LicenseClassesController : ControllerBase
@@ -145,7 +141,7 @@ namespace DLMS.API.Controllers
 
 
 
-
+        [Authorize(Roles = RoleTypes.Admin)]
         [SwaggerOperation(Summary = "Delete a license class",
             Description = "Delete a license class from database")]
         [ProducesResponseType(typeof(string), 404)]

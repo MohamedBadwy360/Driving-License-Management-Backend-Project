@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DLMS.EF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f957553192b8deda814e66b877634cc1a2d5b1c0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+debb118cac22173c75f780572aacb0beb9ea4610")]
 [assembly: System.Reflection.AssemblyProductAttribute("DLMS.EF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DLMS.EF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

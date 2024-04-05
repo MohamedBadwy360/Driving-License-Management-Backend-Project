@@ -1,12 +1,8 @@
-﻿using DLMS.Core;
-using DLMS.Core.DTOs.InternationalLicenseDTOs;
-using DLMS.Core.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
+﻿using DLMS.Core.DTOs.InternationalLicenseDTOs;
 
 namespace DLMS.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class InternationalLicensesController : ControllerBase
@@ -180,6 +176,7 @@ namespace DLMS.API.Controllers
 
 
 
+        [Authorize(Roles = RoleTypes.Admin)]
         [SwaggerOperation(Summary = "Delete an international license",
             Description = "Delete an international license in the database.")]
         [ProducesResponseType(typeof(string), 404)]
