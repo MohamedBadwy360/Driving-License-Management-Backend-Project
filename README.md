@@ -4,7 +4,7 @@ These are `REST API` and `Database` for Driving License Management System.
 
 I used `C#`, `ASP.NET Core`, `SQL Server`, `Entity Framework`, `Identity`, `Visual Studio`, `Visual Studio Code`, and `EF Power Tools`.
 
-I implemented `Repository Pattern with Unit of Work`, applied the `Database-First Approach` to create a database and used `EF Power Tools` to generate models, and applied `OOP`, RESTful API using `Controllers (MVC)`, `Asynchronous Programming`, and `Authentication and Authorization using JWT`.
+I implemented `Repository Pattern with Unit of Work`, applied the `Database-First Approach` to create a database and used `EF Power Tools` to generate models, and applied `OOP`, RESTful API using `Controllers (MVC)`, `Asynchronous Programming`, managing users and roles using `Identity`, and `Authentication and Authorization using JWT`.
 
 
 ---
