@@ -2,9 +2,9 @@
 
 These are `REST API` and `Database` for Driving License Management System.
 
-I used `C#`, `ASP.NET Core`, `SQL Server`, `Entity Framework`, `Visual Studio`, `Visual Studio Code`, and `EF Power Tools`.
+I used `C#`, `ASP.NET Core`, `SQL Server`, `Entity Framework`, `Identity`, `Visual Studio`, `Visual Studio Code`, and `EF Power Tools`.
 
-I implemented `Repository Pattern with Unit of Work`, applied the `Database-First Approach` to create database and use `EF Power Tools` to generate models, and applied `OOP`, RESTful API using `Controllers (MVC)`, and `Asyncronous Programming`.
+I implemented `Repository Pattern with Unit of Work`, applied the `Database-First Approach` to create database and use `EF Power Tools` to generate models, and applied `OOP`, RESTful API using `Controllers (MVC)`, `Asyncronous Programming`, and `Authentication and Authorization using JWT`.
 
 
 ---
@@ -15,3 +15,7 @@ I implemented `Repository Pattern with Unit of Work`, applied the `Database-Firs
 
 ## Database Schema
 ![Database Schema](/Database%20Schema/DVLD%20Database.jpg)
+
+--- 
+
+## Video for SwaggerUI 
